@@ -46,3 +46,26 @@
   5）以后提交只用写，$ git push origin master
   6）克隆远程库，$ git clone git@github.com:<your github programe address>.git eg:$ git clone git@github.com:yuanziren/test.git
   
+五、分支管理
+  1、创建dev 分支，切换到dev 分支
+  $ git checkout -b dev
+  (git checkout 命令加上-b 参数表示创建并切换，相当于以下两条命令：
+  $ git branch dev
+  $ git checkout dev
+  )
+  Switched to a new branch 'dev'
+  2、查看当前分支
+  $ git branch
+  * dev
+  master
+  3、修改readme.txt,add、commit
+  4、切换回master
+  $ git checkout master
+  5、合并分支
+  $ git merge dev
+  6、删除分支
+  $ git branch -d dev
+  7、解决冲突
+  找到冲突文件,去掉<<<<< =====
+  $ git add 冲突文件名字
+  $ git commit -m ‘注释’

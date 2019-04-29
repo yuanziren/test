@@ -1,1 +1,46 @@
-﻿我的测试-----------测一次
+一、创建版本库
+  cd: 切换目录,比如cd e: 切换到e 盘
+  mkdir: 创建一个文件夹
+  pwd: 查看当前目录
+  git init: 初始化一个本地库
+  $ git config --global user.name "name": 设置用户名
+  $ git config --global user.email "email@example.com": 设置邮箱
+  
+二、基本文件操作
+  git add: 添加文件到缓存区   eg:git add test.txt
+  git commit: 提交文件到分支,-m 添加说明   eg:git commit test.txt -m '1th commit'
+  git status: 查看文件是否有修改
+  git diff: 对比文件修改内容
+  git log: 查看提交历史
+  git reset --hard HEAD^: 回到上一个版本   eg：有几个^就返回多少上一级
+  git reset --hard xxx: 回到指定版本,版本号可以不写全
+  git reflog: 查看历史提交版本
+  git rm: 删除版本库文件
+  rm: 删除本地文件
+  ls: 查看文件目录
+
+  三、创建远程版本库
+    1）创建SSH Key
+    $ ssh-keygen -t rsa -C "your email"
+    在用户主目录里找到.ssh 目录，里面有id_rsa 和id_rsa.pub    eg：一般在 C:\Users\Administrator\.ssh目录下
+    2）登陆GitHub，打开“Account settings”，“SSH Keys”页面。点“Add SSH Key”，
+    填上任意Title，在Key 文本框里粘贴id_rsa.pub 文件的内容。点“Add Key”，你
+    就应该看到已经添加的Key
+    3）验证是否成功
+    $ ssh -T git@github.com
+      响应结果：Hi xxx! You've successfully authenticated, but GitHub does not provide
+      shell access.
+    
+四、添加远程库
+  1）登陆GitHub，在右上角找到“Create a new repo”按钮，创建一个新的仓库
+  2）在Repository name 填入learngit，其他保持默认设置，点击“Create repository”
+  按钮，就成功地创建了一个新的Git 仓库
+  3）$ git remote add origin git@github:<your github address>，添加远程库，
+  名字叫做origin
+  4）$ git push -u origin master，把本地库推送到远程库上。由于远程库是空的，我
+  们第一次推送master 分支时，加上了-u 参数，Git 不但会把本地的master 分支内容
+  推送的远程新的master 分支，还会把本地的master 分支和远程的master 分支关联
+  起来，在以后的推送或者拉取时就可以简化命令
+  5）以后提交只用写，$ git push origin master
+  6）克隆远程库，$ git clone git@github.com:<your github programe address>.git eg:$ git clone git@github.com:yuanziren/test.git
+  

@@ -36,3 +36,5 @@
   6) 分别启动 apache-tomcat-8.5.37 和apache-tomcat-8.5.37-02
     (1)cd /usr/local/tomcat/apache-tomcat-8.5.37/bin; 然后./startup.sh
     (2)cd /usr/local/tomcat/apache-tomcat-8.5.37-02/bin; 然后./startup.sh
+    (3)进入浏览器查看8080端口页面 192.168.111.27:8080（这里的IP地址是你所使用的的Linux的IP）
+    (4)进入浏览器查看8080端口页面 192.168.111.27:28080（这里的IP地址是你所使用的的Linux的IP）

@@ -1,18 +1,38 @@
 1.使用工具将压缩包复制到root目录下
 2.创建解压要存放的指定文件夹 mkdir -p /usr/local/tomcat 
 3.解压压缩包到指定文件夹 tar zxvf apache-tomcat-8.5.37.tar.gz -C /usr/local/tomcat/ 
-4.进入bin目录 cd /usr/local/tomcat/apache-tomcat-8.5.37/bin/
-5.启动Tomcat ./startup.sh 
-6.查看Tomcat进程是否启动 ps -ef | grep tomcat
-7.查看日志 
+4.启动或关闭Tomcat
+  1）首先进入bin目录 cd /usr/local/tomcat/apache-tomcat-8.5.37/bin/
+  2）启动 ./startup.sh 
+  3）关闭 ./shutdown.sh
+5.查看Tomcat进程是否启动 ps -ef | grep tomcat
+6.查看日志 
   1）先进入log目录 cd /usr/local/tomcat/apache-tomcat-8.5.37/logs/
   2）tail -f catalina.out
   3）按ctrl+c结束日志监听
-8.修改防火墙拦截规则，否则浏览器访问不到页面 
+7.修改防火墙拦截规则，否则浏览器访问不到页面 
   1）首先进入编辑模式 vi /etc/sysconfig/iptables
       （1）添加8080端口放行规则 -A INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
       （2）按ESC
       （3）按：wq
-  2）重启iptables systemctl restart iptables
-9.进入浏览器查看8080端口页面 192.168.111.27:8080（这里的IP地址是你所使用的的Linux的IP）
-10.简单粗暴方式，直接关闭防火墙，使用此步骤省略8步骤，直接进入9. systemctl  stop firewalld
+  2）重启防火墙 systemctl restart iptables.service
+8.进入浏览器查看8080端口页面 192.168.111.27:8080（这里的IP地址是你所使用的的Linux的IP）
+9.简单粗暴方式，直接关闭防火墙，使用此步骤省略7步骤，直接进入8. systemctl  stop firewalld
+10.启动多个Tomcat
+  1）拷贝Tomcat. cp -rf apache-tomcat-8.5.37/ apache-tomcat-8.5.37-02
+  2）确保之前的tomcat服务关闭 ./shutdown.sh
+  3）在xshell复制一个新的窗口 进入 cd /usr/local/tomcat/conf目录
+  4）编辑server.xml vim server.xml
+    (1)打开行号 set nu （可不用）
+    (2)修改port端口 
+    (3)将8080端口改成28080，8005改成28005，8009改成28009
+    (4)保存并退出 :wq
+  5）将apache-tomcat-8.5.37-02和apache-tomcat-8.5.37区分开来，以便在浏览器访问区别对方
+    (1)进入ROOT目录 cd /usr/local/tomcat/apache-tomcat-8.5.37-02/webapps/ROOT
+    (2)编辑首页 vim index.jsp，在body中添加<h1 style='color:red'>28080</h1>
+    (3)保存并退出：wq
+    (4)修改防火墙拦截规则，相似步骤如7. -A INPUT -p tcp -m state --state NEW -m tcp --dport 28080 -j ACCEPT
+    (5)重启防火墙 systemctl restart iptables.service
+  6) 分别启动 apache-tomcat-8.5.37 和apache-tomcat-8.5.37-02
+    (1)cd /usr/local/tomcat/apache-tomcat-8.5.37/bin; 然后./startup.sh
+    (2)cd /usr/local/tomcat/apache-tomcat-8.5.37-02/bin; 然后./startup.sh

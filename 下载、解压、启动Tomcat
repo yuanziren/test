@@ -8,11 +8,11 @@
   1）先进入log目录 cd /usr/local/tomcat/apache-tomcat-8.5.37/logs/
   2）tail -f catalina.out
   3）按ctrl+c结束日志监听
-8.关闭防火墙，否则浏览器访问不到页面 
+8.修改防火墙拦截规则，否则浏览器访问不到页面 
   1）首先进入编辑模式 vi /etc/sysconfig/iptables
       （1）添加8080端口放行规则 -A INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
       （2）按ESC
       （3）按：wq
   2）重启iptables systemctl restart iptables
 9.进入浏览器查看8080端口页面 192.168.111.27:8080（这里的IP地址是你所使用的的Linux的IP）
-      
+10.简单粗暴方式，直接关闭防火墙，使用此步骤省略8步骤，直接进入9. systemctl  stop firewalld

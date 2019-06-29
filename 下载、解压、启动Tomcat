@@ -1,0 +1,5 @@
+1.使用工具将压缩包复制到root目录下
+2.创建解压要存放的指定文件夹 mkdir -p /usr/local/tomcat 
+3.解压压缩包到指定文件夹 tar zxvf apache-tomcat-8.5.37.tar.gz -C /usr/local/tomcat/ 
+4.进入bin目录 cd /usr/local/tomcat/apache-tomcat-8.5.37/bin/
+5.启动Tomcat ./startup.sh 

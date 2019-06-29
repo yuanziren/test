@@ -15,6 +15,35 @@
 12.关闭Nginx 杀死对应的Nginx进程号 
   1）查看Nginx进程号 ps -ef |grep nginx
   2）杀死Nginx进程 kill -9 46123 46124（这是进程号）
-13.
-14.
+13.修改 nginx 的配置文件实现反向代理（负载均衡）
+  1）进入conf目录 cd /usr/local/nginx/conf
+  2）编辑 vim conf/nginx.conf 
+  3）添加 upstream ego {
+            server 192.168.111.27:8080;
+            server 192.168.111.27:28080;
+        }
+  4）修改 location / {
+            #root   html;
+            #index  index.html index.htm;
+            proxy_pass http://ego;
+        }
+
+
+  5）保存退出：wq
+
+14.检测配置文件是否修改正确 /usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf 
+    -t 表示 test 测试 –c 表示 check 检查 
+15.重新启动Nginx /usr/local/nginx/sbin/nginx
+16.访问浏览器 http://192.168.111.27(Linuxd的IP),不停的刷新网页，会发现Tomcat服务器互相切换
+17.Nginx 配置 http 默认路径访问资源 
+cd /home/ftpuser/ego/
+vi /usr/local/nginx/conf/nginx.conf
+location / {
+            #root   /home/ftpuser/ego;
+            #index  index.html index.htm;
+            #proxy_pass http://ego;
+        }
+
+18./usr/local/nginx/sbin/nginx -s reload
+
 

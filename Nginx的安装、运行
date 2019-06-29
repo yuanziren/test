@@ -1,0 +1,20 @@
+1.拷贝压缩包到root目录
+2.解压 tar -zxvf nginx-1.14.2.tar.gz
+3.创建安装路径 mkdir -p /usr/local/nginx
+4.检测配置 ./configure --prefix=/usr/local/nginx 
+5.安装环境 yum -y install gcc-c++ pcre-devel zlib-devel 
+6.在nginx-1.14.2目录下编译和安装 make && make install 
+7.进入sbin目录 /usr/local/nginx/sbin
+8.启动Nginx   ./nginx
+9.查看nginx进程 ps -ef | grep nginx
+10.添加防火墙拦截规则
+  1）进入编辑模式 vi /etc/sysconfig/iptables
+  2）添加 -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+  3）重启防火墙 systemctl restart iptables.service
+11.浏览器访问Nginx 192.128.111.27:80（这里的IP是Linux的IP）
+12.关闭Nginx 杀死对应的Nginx进程号 
+  1）查看Nginx进程号 ps -ef |grep nginx
+  2）杀死Nginx进程 kill -9 46123 46124（这是进程号）
+13.
+14.
+

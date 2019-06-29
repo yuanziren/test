@@ -3,3 +3,9 @@
 3.解压压缩包到指定文件夹 tar zxvf apache-tomcat-8.5.37.tar.gz -C /usr/local/tomcat/ 
 4.进入bin目录 cd /usr/local/tomcat/apache-tomcat-8.5.37/bin/
 5.启动Tomcat ./startup.sh 
+6.查看Tomcat进程是否启动 ps -ef | grep tomcat
+7.查看日志 
+  1）先进入log目录 cd /usr/local/tomcat/apache-tomcat-8.5.37/logs/
+  2）tail -f catalina.out
+  3）按ctrl+c结束日志监听
+8.

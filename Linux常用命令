@@ -5,5 +5,7 @@
 3.创建文件夹 mkdir -p /usr/local/tomcat/ （p的意思是在创建文件夹如果创建失败，错误爆出）
 4.解压压缩文件到指定目录 tar -zxvf apache-tomcat-8.5.37.tar.gz(压缩文件名) -C /usr/local/tomcat/(指定目录)
 5.文件夹重命名（移动到指定目录）mv 要重命名的当前目录或文件 要移动到的指定目录或文件
+6.用户文件权限授权更改 chown es:es 指定授权的文件名或文件夹
+
 
 备注：root管理员账户密码：yuanziren

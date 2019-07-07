@@ -1,0 +1,15 @@
+1.检查是否安装过MySQL（两种方式，都检查一下）
+  （1）rpm -qa|grep -i mysql
+  （2）rpm -qa | grep mysql
+2.卸载MySQL
+  （1）rpm -ev 要卸载的MySQL名称（第一种卸载不成功的话换第二种）
+  （2）rpm -ev 要卸载的MySQL名称 --nodeps（第二种卸载不成功的话换第三种）
+  （3）yum –y remove ***mysql***
+3.安装mySQl
+   yum -y install mysql-server mysql mysql-devel
+4.启动mysql服务
+   service mysqld start
+5.设置root管理员
+  mysqladmin -u root password 123456
+6.登录
+   mysql -uroot -p123456

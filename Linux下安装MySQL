@@ -8,8 +8,14 @@
 3.安装mySQl
    yum -y install mysql-server mysql mysql-devel
 4.启动mysql服务
-   service mysqld start
+   service mysqld start（关闭是stop）
 5.设置root管理员
   mysqladmin -u root password 123456
 6.登录
    mysql -uroot -p123456
+7.授权（进入mysql命令行，授权远程数据库，以便外界访问）
+    grant all privileges ON *.* TO 'root'@'localhost' identified by '123456' with grant option;
+    flush privileges;
+8.关闭防火墙
+  service iptables stop
+

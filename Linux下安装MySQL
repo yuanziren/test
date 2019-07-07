@@ -19,3 +19,4 @@
 8.关闭防火墙
   service iptables stop
 
+具体详细操作在Linux上线文档中 相老师

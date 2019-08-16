@@ -8,6 +8,10 @@
   $ git config --global user.name "name": 设置用户名
   $ git config --global user.email "email@example.com": 设置邮箱
   
+  $ git config --global user.name: 查看当前用户名
+  $ git config --global user.email: 查看当前邮箱
+  
+  
 二、基本文件操作
   git add: 添加文件到缓存区   eg:git add test.txt
   git commit: 提交文件到分支,-m 添加说明   eg:git commit test.txt -m '1th commit'
